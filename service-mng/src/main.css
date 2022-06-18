@@ -1,0 +1,31 @@
+.content-background {
+  margin: 0;
+  height: 100%;
+  position: relative;
+}
+.header {
+  height: auto;
+}
+.name {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
+.toolbar {
+
+}
+.toolbar-button-groups {
+  margin-right: 25px;
+  color: white;
+}
+
+.template-item {
+  margin-bottom: 8px;
+}
+
+.site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+}
+
