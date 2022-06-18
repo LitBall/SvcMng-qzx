@@ -25,15 +25,11 @@ func GetAwsFlavorDetails(instance_type, region_id string) error {
 	key_pair, err := service.GetKey_db(1)
 	key, secret := key_pair.Aws_a_key, key_pair.Aws_s_key
 	s := core.Signer{
-		// Key:    "AKIAV75AJ4MXP3ZP3YEP",
-		// Secret: "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",
 		Key:    key,
 		Secret: secret,
 	}
 
 	r, _ := http.NewRequest("GET", "https://ecs."+region_id+".myhuaweicloud.com/v2.1/47e2aa1bb84e4cb385270f9a87303990/flavors/"+instance_type, ioutil.NopCloser(bytes.NewBuffer([]byte(""))))
-
-	// resp, _ := http.Get("https://ecs." + region_id + ".myhuaweicloud.com/v2.1/47e2aa1bb84e4cb385270f9a87303990/flavors/" + instance_type)
 
 	s.Sign(r)
 	resp, err := http.DefaultClient.Do(r)
@@ -71,8 +67,6 @@ func GetAliFlavorDetails(instance_type, region_id string) error {
 	}
 	fmt.Println("resp.Body: ", resp.Body)
 	fmt.Println("resp.Body type: ", reflect.TypeOf(resp.Body))
-	// decoder := json.NewDecoder(req.Body)
-	// fmt.Println("hhhhh: ", resp.Body["InstanceTypes"])
 
 	return nil
 }
@@ -82,15 +76,11 @@ func GetHwFlavorDetails(instance_type, region_id string) error {
 	key_pair, err := service.GetKey_db(1)
 	key, secret := key_pair.Hw_a_key, key_pair.Hw_s_key
 	s := core.Signer{
-		// Key:    "NGASOM7EFQJNV6Y6RG8R",
-		// Secret: "spr4yDSO4ezhKjCCHGn3pVhyRq1IB5b4E7MJnNtx",
 		Key:    key,
 		Secret: secret,
 	}
 
 	r, _ := http.NewRequest("GET", "https://ecs."+region_id+".myhuaweicloud.com/v2.1/47e2aa1bb84e4cb385270f9a87303990/flavors/"+instance_type, ioutil.NopCloser(bytes.NewBuffer([]byte(""))))
-
-	// resp, _ := http.Get("https://ecs." + region_id + ".myhuaweicloud.com/v2.1/47e2aa1bb84e4cb385270f9a87303990/flavors/" + instance_type)
 
 	s.Sign(r)
 	resp, err := http.DefaultClient.Do(r)
